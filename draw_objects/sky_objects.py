@@ -20,7 +20,7 @@ class SnowFlake:
                      random.randint(*SnowFlake.COLOR_RANGE['b']))
         self.factor_a = 0.6 * random.uniform(*SnowFlake.FACTOR_A_RANGE)
         self.factor_b = 0.35 * random.uniform(*SnowFlake.FACTOR_B_RANGE)
-        self.factor_c = 0.6 * random.uniform(*SnowFlake.FACTOR_C_RANGE)
+        self.factor_c = 60 * random.uniform(*SnowFlake.FACTOR_C_RANGE)
 
 
     def get_x(self):
