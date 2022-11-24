@@ -28,7 +28,7 @@ while True:
 
 
     sd.finish_drawing()
-    sd.sleep(0.01)
+    sd.sleep(0.001)
     if sd.user_want_exit():
         break
     frame += 1

@@ -58,7 +58,7 @@ class Rainbow:
                   sd.COLOR_CYAN, sd.COLOR_BLUE, sd.COLOR_PURPLE]
     RADIUS_RANGE = sd.resolution[1]*1.5, sd.resolution[1]*2
     X_RANGE = sd.resolution[0]*-0.5, sd.resolution[0]*1.5
-    Y_RANGE = -sd.resolution[1], -0.5*sd.resolution[1]
+    Y_RANGE = -0.6*sd.resolution[1], -0.5*sd.resolution[1]
 
     def __init__(self):
         self.center_position = sd.get_point(x=random.randint(*Rainbow.X_RANGE), y=random.randint(*Rainbow.Y_RANGE))
