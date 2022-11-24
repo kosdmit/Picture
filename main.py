@@ -8,23 +8,25 @@ wind_speed = random.randint(-5, 5)
 
 frame = 0
 snowflakes_list = [sky_objects.SnowFlake() for i in range(SNOWFLAKE_COUNT)]
-
-
+sd.start_drawing()
+sun = sky_objects.Sun()
 while True:
     if frame % 30 == 0:
         wind_speed = random.randint(-5, 5)
 
-    sd.start_drawing()
+    sun.draw()
 
     for snowflake in snowflakes_list:
+        sun.draw()
         snowflake.move(wind_speed)
 
 
 
 
 
+
     sd.finish_drawing()
-    sd.sleep(0.05)
+    sd.sleep(0.01)
     if sd.user_want_exit():
         break
     frame += 1

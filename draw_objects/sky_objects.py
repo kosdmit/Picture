@@ -38,11 +38,17 @@ class SnowFlake:
 
 
 class Sun:
-    X_RANGE = 0, sd.resolution[0] / 2
-    Y_RANGE = sd.resolution[1] / 2, sd.resolution[1]
-
+    X_RANGE = 0, sd.resolution[0]
+    Y_RANGE = sd.resolution[1] * 3/4, sd.resolution[1]
 
     def __init__(self):
         self.centre_position = sd.get_point(x=random.randint(*Sun.X_RANGE), y=random.randint(*Sun.Y_RANGE))
+        self.color = sd.COLOR_YELLOW
+        self.radius = 70
+
+        sd.circle(self.centre_position, self.radius, self.color, width=0)
+
+    def draw(self):
+        sd.circle(self.centre_position, self.radius, self.color, width=0)
 
 
