@@ -10,6 +10,7 @@ frame = 0
 snowflakes_list = [sky_objects.SnowFlake() for i in range(SNOWFLAKE_COUNT)]
 sd.start_drawing()
 sun = sky_objects.Sun()
+rainbow = sky_objects.Rainbow()
 while True:
     if frame % 30 == 0:
         wind_speed = random.randint(-5, 5)
@@ -18,6 +19,7 @@ while True:
 
     for snowflake in snowflakes_list:
         sun.draw()
+        rainbow.draw()
         snowflake.move(wind_speed)
 
 

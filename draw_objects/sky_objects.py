@@ -52,3 +52,21 @@ class Sun:
         sd.circle(self.centre_position, self.radius, self.color, width=0)
 
 
+class Rainbow:
+    WIDTH_RANGE = 5, 20
+    COLOR_LIST = [sd.COLOR_RED, sd.COLOR_ORANGE, sd.COLOR_YELLOW, sd.COLOR_GREEN,
+                  sd.COLOR_CYAN, sd.COLOR_BLUE, sd.COLOR_PURPLE]
+    RADIUS_RANGE = sd.resolution[1]*1.5, sd.resolution[1]*2
+    X_RANGE = sd.resolution[0]*-0.5, sd.resolution[0]*1.5
+    Y_RANGE = -sd.resolution[1], -0.5*sd.resolution[1]
+
+    def __init__(self):
+        self.center_position = sd.get_point(x=random.randint(*Rainbow.X_RANGE), y=random.randint(*Rainbow.Y_RANGE))
+        self.radius = random.randint(*Rainbow.RADIUS_RANGE)
+        self.width = random.randint(*Rainbow.WIDTH_RANGE)
+
+    def draw(self):
+        for i in range(7):
+            sd.circle(self.center_position, self.radius-self.width*i, color=Rainbow.COLOR_LIST[i], width=self.width)
+
+
