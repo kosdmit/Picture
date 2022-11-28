@@ -1,6 +1,11 @@
 import simple_draw as sd
 import random
 
+def create_snowflakes(N, snowflakes_list):
+    for i in range(N):
+        snowflakes_list.append(SnowFlake())
+    return snowflakes_list
+
 
 class SnowFlake:
     snowflakes_count = 0
@@ -21,6 +26,8 @@ class SnowFlake:
         self.factor_a = 0.6 * random.uniform(*SnowFlake.FACTOR_A_RANGE)
         self.factor_b = 0.35 * random.uniform(*SnowFlake.FACTOR_B_RANGE)
         self.factor_c = 60 * random.uniform(*SnowFlake.FACTOR_C_RANGE)
+        self.is_fallen = False
+        self.is_child_exist = False
 
 
     def get_x(self):
@@ -30,11 +37,16 @@ class SnowFlake:
         return self.center.y
 
     def move(self, wind_speed):
-        sd.square(sd.get_point(x=self.get_x()-self.length*1.2, y=self.get_y()-self.length*1.2), side=self.length*2.4,
-                  color=sd.background_color, width=0)
-        self.center = sd.get_point(x=self.get_x()+wind_speed, y=self.get_y()-2)
-        sd.snowflake(self.center, self.length, self.color, self.factor_a, self.factor_b,
-                     self.factor_c)
+        if not self.is_fallen:
+            sd.square(sd.get_point(x=self.get_x()-self.length*1.2, y=self.get_y()-self.length*1.2), side=self.length*2.4,
+                      color=sd.background_color, width=0)
+            self.center = sd.get_point(x=self.get_x()+wind_speed, y=self.get_y()-2)
+            sd.snowflake(self.center, self.length, self.color, self.factor_a, self.factor_b,
+                         self.factor_c)
+            if self.get_y() <= self.length:
+                self.is_fallen = True
+
+
 
 
 class Sun:
